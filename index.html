@@ -3,25 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Modular</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Open-Source Modular Curriculum</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 700px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            color: #2c5f4f;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .tagline {
+            font-size: 1.3em;
+            color: #d97706;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .description {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 40px;
+            line-height: 1.8;
+            text-align: left;
+        }
+        
+        .description strong {
+            color: #2c5f4f;
+        }
+        
+        .features {
+            text-align: left;
+            margin-bottom: 40px;
+            background: #f8faf9;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #2c5f4f;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            font-size: 1.05em;
+            color: #444;
+        }
+        
+        .features li:before {
+            content: "🍊 ";
+            margin-right: 10px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+            color: white;
+            padding: 18px 50px;
+            font-size: 1.3em;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(217, 119, 6, 0.4);
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
+        .open-source-badge {
+            display: inline-block;
+            background: #2c5f4f;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .nav-links {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .nav-links a {
+            display: inline-block;
+            color: #2c5f4f;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 500;
+            font-size: 1.05em;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #d97706;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .tagline {
+                font-size: 1.1em;
+            }
+            
+            .cta-button {
+                padding: 15px 35px;
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav>
+    <div class="container">
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="research.html">Research</a>
+        </div>
+        
+        <!-- Replace this with your logo image uploaded to Google Sites -->
+        <img src="https://raw.githubusercontent.com/jrh0090-glitch/openmodular/refs/heads/main/Playful%20MEC%20Logo%20with%20Iconic%20Letter%20Shapews.png?raw=true" alt="OMC Logo" class="logo"><br>
+        
+        <div class="open-source-badge">Always 100% Free</div>
+        
+        <h1>Rigorous. Accessible. Modular.</h1>
+        
+        <p class="tagline">Resources Designed for Multilingual Classrooms</p>
+        
+        <div class="description">
+            <p>The <strong>Open-Source Modular Curriculum (OMC)</strong> is a shared instructional framework that provides stable, rigorous lessons teachers can rely on, adapt, and build upon—without starting from scratch.</p>
+            <br>
+            <p>Designed as a plug-and-play system for grades 9-12 ELA, OMC reduces planning burden while maintaining instructional coherence, rigor, and accessibility for all learners, especially multilingual students.</p>    <br>
+            <p>Our core principle: <strong>language complexity should not hinder cognitive work.</strong> Multilingual Students engage with the same rigorous analytical thinking as their peers, supported by scaffolded language structures that make complex ideas accessible.</p>
+        </div>
+        
+        <div class="features">
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="research.html">Research</a></li>
-                <!-- Add other navigation links here -->
+                <li><strong>50 Short Story Modules</strong> with complete teaching materials</li>
+                <li><strong>Concept Modules</strong> for deeper understanding</li>
+                <li><strong>Bilingual Resources</strong> including Multilingual Learner Packets with Spanish</li>
+                <li><strong>Creative Projects</strong> with choice and flexibility</li>
+                <li><strong>Analytical & Social-Emotional Learning</strong> integrated throughout</li>
+                <li><strong>Ready-to-Use Resources</strong> including rubrics, lesson plans, and student packets</li>
+                <li><strong>Teacher Autonomy</strong> built in with modular design</li>
             </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>Welcome to Open Modular</h1>
-        <p>Your main content goes here.</p>
-    </main>
-    <footer>
-        <p>&copy; 2026 Open Modular</p>
-    </footer>
+        </div>
+
+         <div class="description">
+            <p><strong>A Growing, Open Resource</strong></p>
+            <br>
+            <p>OMC is an evolving project committed to expanding access to high-quality instructional materials. New modules, grade bands, subjects, and language supports are continuously added to the collection.</p>    <br>
+            <p><strong>The goal is simple:</strong> education improves when resources are shared, not siloed. By making rigorous, thoughtfully designed curriculum freely available, we aim to reduce barriers for teachers and students everywhere—supporting better instruction and deeper learning across classrooms and communities.</p>
+        </div>
+        
+        <a href="https://drive.google.com/drive/folders/1iUF0UO9NQuRwAlFCae9GVRsTXVB9-8aM?usp=sharing" class="cta-button" target="_blank">Access the Curriculum</a>
+        
+        <p style="margin-top: 30px; color: #777; font-size: 0.95em;">
+            All materials are completely free to use, adapt, and share.<br>
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Attribution-NonCommercial-ShareAlike 4.0 International</a><br>
+            Created by educators for educators.
+        </p>
+    </div>
 </body>
 </html>
