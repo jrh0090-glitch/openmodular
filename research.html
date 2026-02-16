@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMEC Research Foundation - Visual Map</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2D9B81 0%, #1A7A63 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #F6931E 0%, #2D9B81 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            font-size: 1.2em;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+        
+        .core-principle {
+            background: linear-gradient(135deg, #FFE4B5 0%, #F6931E 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            text-align: center;
+            border: 3px solid #F6931E;
+        }
+        
+        .core-principle h2 {
+            font-size: 1.8em;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .core-principle p {
+            font-size: 1.3em;
+            color: #4a5568;
+            font-weight: 600;
+        }
+        
+        .pathway-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .pathway-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-left: 5px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pathway-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .pathway-card.cognitive { border-left-color: #2D9B81; }
+        .pathway-card.language { border-left-color: #F6931E; }
+        .pathway-card.pedagogy { border-left-color: #2D9B81; }
+        .pathway-card.design { border-left-color: #F6931E; }
+        .pathway-card.equity { border-left-color: #2D9B81; }
+        .pathway-card.literacy { border-left-color: #F6931E; }
+        
+        .pathway-card h3 {
+            color: #2d3748;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pathway-card h3::before {
+            content: "📚";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+        
+        .research-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .research-section {
+            background: #f7fafc;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .research-section h4 {
+            color: #4a5568;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .research-section h4::before {
+            content: "🔬";
+            margin-right: 8px;
+        }
+        
+        .research-section p {
+            color: #718096;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .research-section ul {
+            list-style-position: inside;
+            color: #4a5568;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        
+        .research-section li {
+            margin-bottom: 5px;
+        }
+        
+        .arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #2D9B81;
+            margin: 10px 0;
+            flex-shrink: 0;
+        }
+        
+        .omc-feature {
+            background: linear-gradient(135deg, #2D9B81 0%, #1A7A63 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: auto;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .omc-feature h4 {
+            font-size: 1.1em;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .omc-feature h4::before {
+            content: "✨";
+            margin-right: 8px;
+        }
+        
+        .omc-feature p {
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .omc-feature ul {
+            list-style-position: inside;
+            font-size: 0.9em;
+            margin-left: 10px;
+            margin-top: 8px;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
+            padding: 20px;
+            background: #f7fafc;
+            border-radius: 10px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .pathway-card {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Open Source Modular ELA Curriculum (OMEC)</h1>
+        <p class="subtitle">Research → Design → Impact</p>
+        
+        <div class="core-principle">
+            <h2>🎯 Core Principle</h2>
+            <p>"Language fluency doesn't dictate cognitive ability."</p>
+        </div>
+        
+        <div class="pathway-grid">
+            <!-- Cognitive Science Card -->
+            <div class="pathway-card cognitive">
+                <h3>Cognitive Science</h3>
+                
+                <div class="research-content">
+                    <div class="research-section">
+                        <h4>Cummins: BICS vs. CALP</h4>
+                        <p>Students can do complex thinking while developing English proficiency</p>
+                        <ul>
+                            <li>BICS: 1-2 years</li>
+                            <li>CALP: 5-7+ years</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>Sweller: Cognitive Load Theory</h4>
+                        <p>Language processing consumes working memory needed for content learning</p>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                </div>
+                
+                <div class="omc-feature">
+                    <h4>OMEC Solution</h4>
+                    <p>Parallel access points:</p>
+                    <ul>
+                        <li>Full academic English</li>
+                        <li>Simplified bilingual</li>
+                        <li>Rigorous Spanish</li>
+                    </ul>
+                    <p style="margin-top: 10px; font-style: italic;">Same cognitive rigor, variable language support</p>
+                </div>
+            </div>
+            
+            <!-- Language Acquisition Card -->
+            <div class="pathway-card language">
+                <h3>L2 Acquisition</h3>
+                
+                <div class="research-content">
+                    <div class="research-section">
+                        <h4>Krashen: i+1</h4>
+                        <p>Comprehensible input just above current level accelerates acquisition</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>García: Translanguaging</h4>
+                        <p>One integrated linguistic repertoire—leverage ALL resources</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>L1 Scaffold Research</h4>
+                        <p>L1 support accelerates (not hinders) L2 development</p>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                </div>
+                
+                <div class="omc-feature">
+                    <h4>OMEC Solution</h4>
+                    <ul>
+                        <li>Bilingual materials throughout</li>
+                        <li>L1 recognized as cognitive relief</li>
+                        <li>Addresses "language burnout"</li>
+                        <li>Validates full linguistic identity</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Literacy Instruction Card -->
+            <div class="pathway-card literacy">
+                <h3>Literacy Instruction</h3>
+                
+                <div class="research-content">
+                    <div class="research-section">
+                        <h4>Beck, McKeown, Kucan: Tiered Vocabulary</h4>
+                        <p>Explicit Tier 2 academic vocabulary instruction essential</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>Duke & Pearson: Comprehension Strategies</h4>
+                        <p>Explicit strategy instruction with complex texts</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>Pearson & Gallagher: Gradual Release</h4>
+                        <p>"I do, we do, you do" progression</p>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                </div>
+                
+                <div class="omc-feature">
+                    <h4>OMEC Solution</h4>
+                    <ul>
+                        <li>Embedded vocabulary instruction</li>
+                        <li>Comprehension strategies scaffolded</li>
+                        <li>Modeling → guided → independent</li>
+                        <li>Complex texts with scaffolds</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Academic Language Card -->
+            <div class="pathway-card pedagogy">
+                <h3>Academic Language</h3>
+                
+                <div class="research-content">
+                    <div class="research-section">
+                        <h4>Zwiers & Gibbons: Academic Discourse</h4>
+                        <p>Explicit instruction in academic language structures needed</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>Graff & Birkenstein: "They Say/I Say"</h4>
+                        <p>Making argument patterns explicit</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>Toulmin: Argument Structure</h4>
+                        <p>Recognizable patterns in academic argument</p>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                </div>
+                
+                <div class="omc-feature">
+                    <h4>OMEC Solution</h4>
+                    <ul>
+                        <li>Artifact-Construction Model</li>
+                        <li>Pressure-Type Analysis framework</li>
+                        <li>Sentence stems as temporary scaffolds</li>
+                        <li>Explicit academic discourse patterns</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Curriculum Design Card -->
+            <div class="pathway-card design">
+                <h3>Curriculum Design</h3>
+                
+                <div class="research-content">
+                    <div class="research-section">
+                        <h4>UDL: Universal Design for Learning</h4>
+                        <p>Multiple means of engagement, representation, action/expression</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>Teacher Autonomy Research</h4>
+                        <p>Scripted curricula undermine effectiveness; flexibility essential</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>OER Research</h4>
+                        <p>Open resources promote equity and teacher collaboration</p>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                </div>
+                
+                <div class="omc-feature">
+                    <h4>OMEC Solution</h4>
+                    <ul>
+                        <li>"Lego-style" modular design</li>
+                        <li>Teacher decision-making preserved</li>
+                        <li>Completely free & open-source</li>
+                        <li>Adaptable to local contexts</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Cultural Responsiveness Card -->
+            <div class="pathway-card equity">
+                <h3>Cultural Responsiveness</h3>
+                
+                <div class="research-content">
+                    <div class="research-section">
+                        <h4>Paris & Alim: Culturally Sustaining Pedagogy</h4>
+                        <p>Sustain and nurture students' cultural/linguistic practices</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>Moll, González, Amanti: Funds of Knowledge</h4>
+                        <p>Build on students' cultural assets</p>
+                    </div>
+                    
+                    <div class="research-section">
+                        <h4>Freire: Critical Literacy</h4>
+                        <p>Literacy as tool for liberation and transformation</p>
+                    </div>
+                    
+                    <div class="arrow">↓</div>
+                </div>
+                
+                <div class="omc-feature">
+                    <h4>OMEC Solution</h4>
+                    <ul>
+                        <li>Diverse authors centered</li>
+                        <li>Multilingualism as asset</li>
+                        <li>Critical analysis of power/systems</li>
+                        <li>Pressure-Type Analysis framework</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #2D9B81 0%, #1A7A63 100%);"></div>
+                <span><strong>OMEC Innovation</strong> - How research becomes practice</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #f7fafc;"></div>
+                <span><strong>Research Foundation</strong> - Empirical evidence base</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
