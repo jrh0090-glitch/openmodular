@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMEC — Net Neighbors</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    .neighborhood-header {
+      text-align: center;
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+    }
+
+    .neighborhood-header h1 {
+      margin-bottom: 12px;
+    }
+
+    .neighborhood-header p {
+      color: var(--text-muted);
+      font-size: 1.05em;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+
+    /* ── STREET SCENE ── */
+    .street {
+      position: relative;
+      margin-bottom: 56px;
+    }
+
+    .street-label {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 0.88em;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 14px;
+      padding-left: 4px;
+      border-left: 3px solid var(--amber);
+      padding-left: 10px;
+    }
+
+    .street-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    /* ── HOUSE CARD ── */
+    .house {
+      background: var(--white);
+      border-radius: 0 0 10px 10px;
+      border: 1.5px solid var(--border);
+      width: 200px;
+      flex-shrink: 0;
+      box-shadow: var(--shadow);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+    }
+
+    .house:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      color: inherit;
+    }
+
+    /* Roof */
+    .roof {
+      width: 100%;
+      height: 64px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .roof::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: -10%;
+      width: 120%;
+      height: 80px;
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    }
+
+    /* Roof color variants */
+    .roof-green::before  { background: var(--green); }
+    .roof-amber::before  { background: var(--amber); }
+    .roof-teal::before   { background: #2a8a7a; }
+    .roof-rust::before   { background: #b85c2a; }
+    .roof-navy::before   { background: #2d4a6e; }
+    .roof-plum::before   { background: #6b3f72; }
+    .roof-sage::before   { background: #5a7a5a; }
+
+    /* Chimney */
+    .roof::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: 44px;
+      width: 12px;
+      height: 26px;
+      border-radius: 2px 2px 0 0;
+      background: #888;
+      z-index: 2;
+    }
+
+    /* House body */
+    .house-body {
+      padding: 14px 14px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .house-icon {
+      font-size: 1.6em;
+      margin-bottom: 6px;
+    }
+
+    .house-name {
+      font-family: 'Lora', serif;
+      font-size: 0.95em;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 5px;
+      line-height: 1.3;
+    }
+
+    .house-desc {
+      font-size: 0.8em;
+      color: var(--text-muted);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    /* Door strip at bottom */
+    .house-door {
+      height: 6px;
+      border-radius: 0 0 8px 8px;
+    }
+
+    .door-green  { background: var(--green); }
+    .door-amber  { background: var(--amber); }
+    .door-teal   { background: #2a8a7a; }
+    .door-rust   { background: #b85c2a; }
+    .door-navy   { background: #2d4a6e; }
+    .door-plum   { background: #6b3f72; }
+    .door-sage   { background: #5a7a5a; }
+
+    /* ── SIDEWALK ── */
+    .sidewalk {
+      height: 14px;
+      background: repeating-linear-gradient(
+        90deg,
+        #d8d0c4 0px, #d8d0c4 48px,
+        #c8c0b4 48px, #c8c0b4 50px
+      );
+      border-radius: 4px;
+      margin-top: 0px;
+      margin-bottom: 32px;
+    }
+
+    /* ── WELCOME SIGN ── */
+    .welcome-sign {
+      text-align: center;
+      background: var(--amber-pale);
+      border: 2px solid var(--amber);
+      border-radius: 12px;
+      padding: 20px 28px;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .welcome-sign p {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.05em;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .welcome-sign .sign-header {
+      font-size: 0.75em;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 8px;
+      font-style: normal;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    @media (max-width: 680px) {
+      .street-row {
+        gap: 14px;
+      }
+      .house {
+        width: 160px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .house {
+        width: calc(50% - 7px);
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="https://raw.githubusercontent.com/jrh0090-glitch/openmodular/refs/heads/main/ologo.png" alt="OMEC Logo">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="howtouse.html">How to Use</a>
+      <a href="research.html">Research</a>
+      <a href="neighbors.html" class="active">Net Neighbors</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="page-wide">
+
+    <div class="neighborhood-header">
+      <h1>🏘️ Net Neighbors</h1>
+      <p>A curated block of free, thoughtfully chosen resources for teachers and multilingual learners. No social media. Just good neighbors.</p>
+    </div>
+
+    <div class="welcome-sign">
+      <div class="sign-header">📋 About This Block</div>
+      <p>Every site on this street has been hand-picked. If it's here, it's free, useful, and worth your time. Stop in anytime.</p>
+    </div>
+
+    <!-- Street 1: ELL & Multilingual Resources -->
+    <div class="street">
+      <div class="street-label">ELL &amp; Multilingual Learning</div>
+      <div class="street-row">
+
+        <a class="house" href="https://www.colorincolorado.org/" target="_blank" rel="noopener">
+          <div class="roof roof-green"></div>
+          <div class="house-body">
+            <div class="house-icon">🌎</div>
+            <div class="house-name">Colorín Colorado</div>
+            <div class="house-desc">Research-based ELL strategies and resources for teachers and families</div>
+          </div>
+          <div class="house-door door-green"></div>
+        </a>
+
+        <a class="house" href="http://a4esl.org/" target="_blank" rel="noopener">
+          <div class="roof roof-teal"></div>
+          <div class="house-body">
+            <div class="house-icon">📝</div>
+            <div class="house-name">Activities for ESL Students</div>
+            <div class="house-desc">Quizzes, tests, and exercises for ESL/EFL learners at all levels</div>
+          </div>
+          <div class="house-door door-teal"></div>
+        </a>
+
+        <a class="house" href="https://www.eslcafe.com/" target="_blank" rel="noopener">
+          <div class="roof roof-amber"></div>
+          <div class="house-body">
+            <div class="house-icon">☕</div>
+            <div class="house-name">Dave's ESL Cafe</div>
+            <div class="house-desc">A long-running community hub for ESL teachers and learners worldwide</div>
+          </div>
+          <div class="house-door door-amber"></div>
+        </a>
+
+        <a class="house" href="https://www.engvid.com/" target="_blank" rel="noopener">
+          <div class="roof roof-rust"></div>
+          <div class="house-body">
+            <div class="house-icon">🎬</div>
+            <div class="house-name">engVid</div>
+            <div class="house-desc">Free English lessons on video from certified teachers</div>
+          </div>
+          <div class="house-door door-rust"></div>
+        </a>
+
+        <a class="house" href="https://www.esl-galaxy.com/" target="_blank" rel="noopener">
+          <div class="roof roof-navy"></div>
+          <div class="house-body">
+            <div class="house-icon">🌟</div>
+            <div class="house-name">ESL Galaxy</div>
+            <div class="house-desc">Printable worksheets and games for ESL/EFL classrooms</div>
+          </div>
+          <div class="house-door door-navy"></div>
+        </a>
+
+        <a class="house" href="https://www.bbc.co.uk/learningenglish/" target="_blank" rel="noopener">
+          <div class="roof roof-green"></div>
+          <div class="house-body">
+            <div class="house-icon">🇬🇧</div>
+            <div class="house-name">BBC Learning English</div>
+            <div class="house-desc">Audio, video, and interactive lessons from the BBC</div>
+          </div>
+          <div class="house-door door-green"></div>
+        </a>
+
+        <a class="house" href="https://learningenglish.voanews.com/" target="_blank" rel="noopener">
+          <div class="roof roof-teal"></div>
+          <div class="house-body">
+            <div class="house-icon">📻</div>
+            <div class="house-name">VOA Learning English</div>
+            <div class="house-desc">News and lessons in slower, simplified English from Voice of America</div>
+          </div>
+          <div class="house-door door-teal"></div>
+        </a>
+
+        <a class="house" href="https://www.evaeaston.com/" target="_blank" rel="noopener">
+          <div class="roof roof-plum"></div>
+          <div class="house-body">
+            <div class="house-icon">🗣️</div>
+            <div class="house-name">Eva Easton</div>
+            <div class="house-desc">Pronunciation resources and American English audio for ESL learners</div>
+          </div>
+          <div class="house-door door-plum"></div>
+        </a>
+
+        <a class="house" href="https://esl-bits.net/home.html" target="_blank" rel="noopener">
+          <div class="roof roof-sage"></div>
+          <div class="house-body">
+            <div class="house-icon">🎧</div>
+            <div class="house-name">ESL Bits</div>
+            <div class="house-desc">Listening activities using authentic audio for intermediate learners</div>
+          </div>
+          <div class="house-door door-sage"></div>
+        </a>
+
+      </div>
+    </div>
+    <div class="sidewalk"></div>
+
+    <!-- Street 2: Literacy & Reading -->
+    <div class="street">
+      <div class="street-label">Literacy &amp; Reading</div>
+      <div class="street-row">
+
+        <a class="house" href="https://www.ereadingworksheets.com/" target="_blank" rel="noopener">
+          <div class="roof roof-rust"></div>
+          <div class="house-body">
+            <div class="house-icon">📚</div>
+            <div class="house-name">eReading Worksheets</div>
+            <div class="house-desc">Free printable reading comprehension and skills worksheets for all grades</div>
+          </div>
+          <div class="house-door door-rust"></div>
+        </a>
+
+        <a class="house" href="https://www.learningchocolate.com/" target="_blank" rel="noopener">
+          <div class="roof roof-amber"></div>
+          <div class="house-body">
+            <div class="house-icon">🍫</div>
+            <div class="house-name">Learning Chocolate</div>
+            <div class="house-desc">Visual vocabulary building with pictures and audio for ELL learners</div>
+          </div>
+          <div class="house-door door-amber"></div>
+        </a>
+
+        <a class="house" href="https://owl.purdue.edu/owl/index.html" target="_blank" rel="noopener">
+          <div class="roof roof-green"></div>
+          <div class="house-body">
+            <div class="house-icon">🦉</div>
+            <div class="house-name">Purdue OWL</div>
+            <div class="house-desc">The gold standard for writing guidance, citations, and grammar resources</div>
+          </div>
+          <div class="house-door door-green"></div>
+        </a>
+
+        <a class="house" href="https://www.tv411.org/" target="_blank" rel="noopener">
+          <div class="roof roof-navy"></div>
+          <div class="house-body">
+            <div class="house-icon">📺</div>
+            <div class="house-name">TV411</div>
+            <div class="house-desc">Videos and activities for reading, writing, vocabulary, math, and science</div>
+          </div>
+          <div class="house-door door-navy"></div>
+        </a>
+
+        <a class="house" href="https://www.readworks.org/" target="_blank" rel="noopener">
+          <div class="roof roof-teal"></div>
+          <div class="house-body">
+            <div class="house-icon">📄</div>
+            <div class="house-name">ReadWorks</div>
+            <div class="house-desc">Free reading passages and comprehension tools for all grade levels</div>
+          </div>
+          <div class="house-door door-teal"></div>
+        </a>
+
+        <a class="house" href="https://www.commonlit.org/" target="_blank" rel="noopener">
+          <div class="roof roof-plum"></div>
+          <div class="house-body">
+            <div class="house-icon">📖</div>
+            <div class="house-name">CommonLit</div>
+            <div class="house-desc">Free literary texts with built-in supports for all readers</div>
+          </div>
+          <div class="house-door door-plum"></div>
+        </a>
+
+        <a class="house" href="https://newsela.com/" target="_blank" rel="noopener">
+          <div class="roof roof-amber"></div>
+          <div class="house-body">
+            <div class="house-icon">📰</div>
+            <div class="house-name">Newsela</div>
+            <div class="house-desc">Leveled nonfiction texts — great for multilingual learners</div>
+          </div>
+          <div class="house-door door-amber"></div>
+        </a>
+
+      </div>
+    </div>
+    <div class="sidewalk"></div>
+
+    <!-- Street 3: Practice & Skills -->
+    <div class="street">
+      <div class="street-label">Practice &amp; Skills</div>
+      <div class="street-row">
+
+        <a class="house" href="http://quill.org" target="_blank" rel="noopener">
+          <div class="roof roof-teal"></div>
+          <div class="house-body">
+            <div class="house-icon">✏️</div>
+            <div class="house-name">Quill.org</div>
+            <div class="house-desc">Free writing and grammar practice activities with immediate feedback</div>
+          </div>
+          <div class="house-door door-teal"></div>
+        </a>
+
+        <a class="house" href="https://www.k5learning.com/" target="_blank" rel="noopener">
+          <div class="roof roof-amber"></div>
+          <div class="house-body">
+            <div class="house-icon">🔢</div>
+            <div class="house-name">K5 Learning</div>
+            <div class="house-desc">Reading and math worksheets for K–5, useful for multilingual newcomers</div>
+          </div>
+          <div class="house-door door-amber"></div>
+        </a>
+
+        <a class="house" href="https://www.khanacademy.org/" target="_blank" rel="noopener">
+          <div class="roof roof-green"></div>
+          <div class="house-body">
+            <div class="house-icon">🎓</div>
+            <div class="house-name">Khan Academy</div>
+            <div class="house-desc">Free courses and practice across subjects for all skill levels</div>
+          </div>
+          <div class="house-door door-green"></div>
+        </a>
+
+        <a class="house" href="https://es.khanacademy.org/" target="_blank" rel="noopener">
+          <div class="roof roof-sage"></div>
+          <div class="house-body">
+            <div class="house-icon">🎓</div>
+            <div class="house-name">Khan Academy (Español)</div>
+            <div class="house-desc">Khan Academy's full platform in Spanish for bilingual learners</div>
+          </div>
+          <div class="house-door door-sage"></div>
+        </a>
+
+      </div>
+    </div>
+    <div class="sidewalk"></div>
+
+    <!-- Street 4: Language Learning Tools -->
+    <div class="street">
+      <div class="street-label">Language Learning Tools</div>
+      <div class="street-row">
+
+        <a class="house" href="https://mangolanguages.com/" target="_blank" rel="noopener">
+          <div class="roof roof-rust"></div>
+          <div class="house-body">
+            <div class="house-icon">🥭</div>
+            <div class="house-name">Mango Languages</div>
+            <div class="house-desc">Conversational language learning — often free through public libraries</div>
+          </div>
+          <div class="house-door door-rust"></div>
+        </a>
+
+        <a class="house" href="https://www.collectedny.org/" target="_blank" rel="noopener">
+          <div class="roof roof-plum"></div>
+          <div class="house-body">
+            <div class="house-icon">🗂️</div>
+            <div class="house-name">Collected NY</div>
+            <div class="house-desc">Adult literacy and ESL resources curated for educators</div>
+          </div>
+          <div class="house-door door-plum"></div>
+        </a>
+
+      </div>
+    </div>
+    <div class="sidewalk"></div>
+
+    <div class="welcome-sign" style="margin-top: 16px; margin-bottom: 0;">
+      <div class="sign-header">🏡 Know a Good Neighbor?</div>
+      <p>This block grows by word of mouth. If you know a free, useful resource that would fit here, share it with an educator you trust.</p>
+    </div>
+
+  </div>
+
+</body>
+</html>

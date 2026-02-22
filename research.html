@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMEC — Research Foundation</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
+      margin-top: 36px;
+    }
+
+    .research-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--green);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .research-card.amber-top {
+      border-top-color: var(--amber);
+    }
+
+    .research-card h3 {
+      font-family: 'Lora', serif;
+      font-size: 1.15em;
+      color: var(--green);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .research-card h3 .icon {
+      font-size: 1.2em;
+    }
+
+    .study {
+      background: var(--green-pale);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .study h4 {
+      font-size: 0.88em;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 4px;
+    }
+
+    .study p {
+      font-size: 0.88em;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+
+    .study ul {
+      font-size: 0.85em;
+      color: var(--text-muted);
+      padding-left: 16px;
+      margin-top: 4px;
+    }
+
+    .omec-result {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+    }
+
+    .omec-result h4 {
+      font-size: 0.9em;
+      font-weight: 600;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .omec-result ul {
+      padding-left: 16px;
+      font-size: 0.9em;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .core-banner {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      color: var(--white);
+      border-radius: 14px;
+      padding: 28px 36px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .core-banner p {
+      font-family: 'Lora', serif;
+      font-size: 1.35em;
+      font-style: italic;
+      color: var(--white);
+      margin: 0;
+    }
+
+    .core-banner .label {
+      font-size: 0.8em;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 10px;
+    }
+
+    .page-header {
+      text-align: center;
+      padding: 40px 0 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 36px;
+    }
+
+    .page-header img {
+      max-width: 160px;
+      margin-bottom: 20px;
+    }
+
+    .page-header p {
+      color: var(--text-muted);
+      font-style: italic;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="https://raw.githubusercontent.com/jrh0090-glitch/openmodular/refs/heads/main/ologo.png" alt="OMEC Logo">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="howtouse.html">How to Use</a>
+      <a href="research.html" class="active">Research</a>
+      <a href="neighbors.html">Net Neighbors</a>
+      <a href="about.html">About</a>
+    </div>
+  </nav>
+
+  <div class="page-wide">
+
+    <div class="page-header">
+      <img src="https://raw.githubusercontent.com/jrh0090-glitch/openmodular/refs/heads/main/11123.png" alt="OMEC Logo">
+      <h1>Research Foundation</h1>
+      <p>The evidence base that shapes every OMEC module</p>
+    </div>
+
+    <div class="core-banner">
+      <div class="label">Core Principle</div>
+      <p>"Language fluency doesn't dictate cognitive ability."</p>
+    </div>
+
+    <div class="research-grid">
+
+      <!-- Cognitive Science -->
+      <div class="research-card">
+        <h3><span class="icon">🧠</span> Cognitive Science</h3>
+        <div class="study">
+          <h4>Cummins: BICS vs. CALP</h4>
+          <p>Students can do complex thinking while developing English proficiency</p>
+          <ul><li>BICS: 1–2 years</li><li>CALP: 5–7+ years</li></ul>
+        </div>
+        <div class="study">
+          <h4>Sweller: Cognitive Load Theory</h4>
+          <p>Language processing consumes working memory needed for content learning</p>
+        </div>
+        <div class="omec-result">
+          <h4>OMEC Response</h4>
+          <ul>
+            <li>Parallel access points: full academic English, simplified bilingual, rigorous Spanish</li>
+            <li>Same cognitive rigor — variable language support</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- L2 Acquisition -->
+      <div class="research-card amber-top">
+        <h3><span class="icon">🌐</span> L2 Acquisition</h3>
+        <div class="study">
+          <h4>Krashen: i+1</h4>
+          <p>Comprehensible input just above current level accelerates acquisition</p>
+        </div>
+        <div class="study">
+          <h4>García: Translanguaging</h4>
+          <p>Students draw on one integrated linguistic repertoire — all language resources matter</p>
+        </div>
+        <div class="study">
+          <h4>L1 Scaffold Research</h4>
+          <p>First-language support accelerates, not hinders, second-language development</p>
+        </div>
+        <div class="omec-result">
+          <h4>OMEC Response</h4>
+          <ul>
+            <li>Bilingual materials throughout</li>
+            <li>L1 recognized as cognitive relief, not crutch</li>
+            <li>Validates full linguistic identity</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Literacy Instruction -->
+      <div class="research-card amber-top">
+        <h3><span class="icon">📖</span> Literacy Instruction</h3>
+        <div class="study">
+          <h4>Beck, McKeown & Kucan: Tiered Vocabulary</h4>
+          <p>Explicit Tier 2 academic vocabulary instruction is essential for comprehension</p>
+        </div>
+        <div class="study">
+          <h4>Duke & Pearson: Comprehension Strategies</h4>
+          <p>Explicit strategy instruction enables deeper engagement with complex texts</p>
+        </div>
+        <div class="study">
+          <h4>Pearson & Gallagher: Gradual Release</h4>
+          <p>"I do, we do, you do" — structured movement toward independence</p>
+        </div>
+        <div class="omec-result">
+          <h4>OMEC Response</h4>
+          <ul>
+            <li>Embedded vocabulary instruction</li>
+            <li>Scaffolded comprehension strategies</li>
+            <li>Complex texts with structured supports</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Academic Language -->
+      <div class="research-card">
+        <h3><span class="icon">✍️</span> Academic Language</h3>
+        <div class="study">
+          <h4>Zwiers & Gibbons: Academic Discourse</h4>
+          <p>Explicit instruction in academic language structures is necessary, not optional</p>
+        </div>
+        <div class="study">
+          <h4>Graff & Birkenstein: They Say / I Say</h4>
+          <p>Making argument templates explicit lowers barriers to academic writing</p>
+        </div>
+        <div class="study">
+          <h4>Toulmin: Argument Structure</h4>
+          <p>Recognizable patterns make academic argument learnable and teachable</p>
+        </div>
+        <div class="omec-result">
+          <h4>OMEC Response</h4>
+          <ul>
+            <li>Artifact-Construction Model</li>
+            <li>Pressure-Type Analysis framework</li>
+            <li>Sentence stems as temporary scaffolds</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Curriculum Design -->
+      <div class="research-card">
+        <h3><span class="icon">🧩</span> Curriculum Design</h3>
+        <div class="study">
+          <h4>Universal Design for Learning (UDL)</h4>
+          <p>Multiple means of engagement, representation, and expression serve all learners</p>
+        </div>
+        <div class="study">
+          <h4>Teacher Autonomy Research</h4>
+          <p>Scripted curricula undermine teacher effectiveness; flexibility is essential</p>
+        </div>
+        <div class="study">
+          <h4>Open Educational Resources (OER)</h4>
+          <p>Open resources promote equity and teacher collaboration across contexts</p>
+        </div>
+        <div class="omec-result">
+          <h4>OMEC Response</h4>
+          <ul>
+            <li>"Lego-style" modular design</li>
+            <li>Teacher decision-making preserved</li>
+            <li>Completely free and open-source</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Cultural Responsiveness -->
+      <div class="research-card amber-top">
+        <h3><span class="icon">🌱</span> Cultural Responsiveness</h3>
+        <div class="study">
+          <h4>Paris & Alim: Culturally Sustaining Pedagogy</h4>
+          <p>Sustain and nurture students' cultural and linguistic practices — don't erase them</p>
+        </div>
+        <div class="study">
+          <h4>Moll, González & Amanti: Funds of Knowledge</h4>
+          <p>Students bring deep cultural assets that instruction should build upon</p>
+        </div>
+        <div class="study">
+          <h4>Freire: Critical Literacy</h4>
+          <p>Literacy as a tool for understanding and transforming the world</p>
+        </div>
+        <div class="omec-result">
+          <h4>OMEC Response</h4>
+          <ul>
+            <li>Diverse authors centered</li>
+            <li>Multilingualism treated as asset</li>
+            <li>Pressure-Type Analysis examines systems of power</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

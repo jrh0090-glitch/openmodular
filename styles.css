@@ -1,0 +1,287 @@
+/* =============================================
+   OMEC — Shared Stylesheet
+   Colors: Deep Green #2c5f4f | Amber #d97706
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap');
+
+:root {
+  --green: #2c5f4f;
+  --green-light: #3a7a65;
+  --green-pale: #e8f2ef;
+  --amber: #d97706;
+  --amber-light: #f59e0b;
+  --amber-pale: #fef3c7;
+  --white: #ffffff;
+  --off-white: #faf9f7;
+  --text: #2d2d2d;
+  --text-muted: #6b7280;
+  --border: #e5e0d8;
+  --shadow: 0 4px 24px rgba(44, 95, 79, 0.10);
+  --shadow-lg: 0 12px 48px rgba(44, 95, 79, 0.14);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background-color: var(--off-white);
+  color: var(--text);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+  background: var(--green);
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.18);
+  height: 68px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.nav-logo img {
+  height: 44px;
+  width: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.82);
+  text-decoration: none;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 500;
+  font-size: 0.95em;
+  letter-spacing: 0.02em;
+  padding: 8px 14px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--white);
+  background: rgba(255,255,255,0.14);
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid var(--amber);
+}
+
+/* ── PAGE WRAPPER ── */
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+.page-wide {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 24px 80px;
+}
+
+/* ── TYPOGRAPHY ── */
+h1 {
+  font-family: 'Lora', serif;
+  color: var(--green);
+  font-size: 2.4em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-family: 'Lora', serif;
+  color: var(--green);
+  font-size: 1.6em;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+h3 {
+  font-family: 'Source Sans 3', sans-serif;
+  color: var(--green);
+  font-size: 1.15em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+p {
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+a {
+  color: var(--amber);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--green);
+}
+
+/* ── HERO SECTION ── */
+.hero {
+  text-align: center;
+  padding: 48px 0 40px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+
+.hero img.logo {
+  max-width: 220px;
+  margin-bottom: 24px;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--green);
+  color: var(--white);
+  font-size: 0.82em;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+
+.tagline {
+  font-size: 1.15em;
+  color: var(--amber);
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* ── CONTENT CARD ── */
+.card {
+  background: var(--white);
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+}
+
+.card-accent {
+  border-left: 4px solid var(--green);
+}
+
+.card-amber {
+  border-left: 4px solid var(--amber);
+  background: var(--amber-pale);
+}
+
+/* ── FEATURE LIST ── */
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  padding: 9px 0;
+  padding-left: 28px;
+  position: relative;
+  font-size: 1.02em;
+  color: var(--text);
+  border-bottom: 1px solid var(--green-pale);
+}
+
+.feature-list li:last-child {
+  border-bottom: none;
+}
+
+.feature-list li::before {
+  content: "🍊";
+  position: absolute;
+  left: 0;
+}
+
+/* ── CTA BUTTON ── */
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--amber) 0%, var(--amber-light) 100%);
+  color: var(--white);
+  padding: 16px 44px;
+  font-size: 1.1em;
+  font-weight: 600;
+  font-family: 'Source Sans 3', sans-serif;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 18px rgba(217, 119, 6, 0.28);
+  letter-spacing: 0.01em;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(217, 119, 6, 0.38);
+  color: var(--white);
+}
+
+/* ── FOOTER NOTE ── */
+.footer-note {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9em;
+  line-height: 1.9;
+}
+
+.footer-note a {
+  color: var(--text-muted);
+  text-decoration: underline;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  nav {
+    padding: 0 16px;
+    height: auto;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 2px;
+  }
+
+  .nav-links a {
+    font-size: 0.85em;
+    padding: 6px 10px;
+  }
+
+  h1 { font-size: 1.9em; }
+
+  .page, .page-wide {
+    padding: 36px 16px 60px;
+  }
+}

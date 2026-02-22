@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OMEC — About</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+
+    .page-header {
+      text-align: center;
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .page-header p {
+      color: var(--text-muted);
+      font-style: italic;
+      font-size: 1.05em;
+      max-width: 560px;
+      margin: 8px auto 0;
+    }
+
+    .about-section {
+      margin-bottom: 48px;
+    }
+
+    .about-section h2 {
+      margin-bottom: 20px;
+    }
+
+    /* Opening statement — big and bold */
+    .opening-statement {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      border-radius: 16px;
+      padding: 44px 48px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+
+    .opening-statement p {
+      font-family: 'Lora', serif;
+      font-size: 1.5em;
+      color: var(--white);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .opening-statement p strong {
+      color: #fcd470;
+    }
+
+    /* Body sections */
+    .prose-section {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 36px 40px;
+      margin-bottom: 24px;
+    }
+
+    .prose-section h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .prose-section p {
+      font-size: 1.02em;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 18px;
+    }
+
+    .prose-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Pull quotes */
+    .pull-quote {
+      border-left: 4px solid var(--amber);
+      padding: 14px 22px;
+      margin: 24px 0;
+      background: var(--amber-pale);
+      border-radius: 0 8px 8px 0;
+      font-family: 'Lora', serif;
+      font-style: italic;
+      font-size: 1.1em;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Belief list */
+    .belief-list {
+      list-style: none;
+      padding: 0;
+      margin-top: 8px;
+    }
+
+    .belief-list li {
+      padding: 12px 0 12px 36px;
+      position: relative;
+      font-size: 1.02em;
+      line-height: 1.6;
+      border-bottom: 1px solid var(--green-pale);
+      color: var(--text);
+    }
+
+    .belief-list li:last-child {
+      border-bottom: none;
+    }
+
+    .belief-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--amber);
+      font-weight: 700;
+      font-size: 1.1em;
+    }
+
+    /* No social media section — darker feel */
+    .nosocial-section {
+      background: #1e3d32;
+      border-radius: 14px;
+      padding: 36px 40px;
+      margin-bottom: 24px;
+    }
+
+    .nosocial-section h2 {
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .nosocial-section p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.02em;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+
+    .nosocial-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .nosocial-section strong {
+      color: #fcd470;
+    }
+
+    /* Closing */
+    .closing {
+      text-align: center;
+      padding: 40px 32px;
+      background: var(--amber-pale);
+      border-radius: 14px;
+      border: 1px solid #f0d090;
+      margin-bottom: 24px;
+    }
+
+    .closing p {
+      font-family: 'Lora', serif;
+      font-size: 1.15em;
+      line-height: 1.75;
+      color: var(--text);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .closing .sig {
+      margin-top: 24px;
+      font-size: 0.9em;
+      color: var(--text-muted);
+      font-style: italic;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    @media (max-width: 680px) {
+      .opening-statement {
+        padding: 32px 24px;
+      }
+      .opening-statement p {
+        font-size: 1.2em;
+      }
+      .prose-section,
+      .nosocial-section {
+        padding: 28px 22px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="https://raw.githubusercontent.com/jrh0090-glitch/openmodular/refs/heads/main/ologo.png" alt="OMEC Logo">
+    </a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="howtouse.html">How to Use</a>
+      <a href="research.html">Research</a>
+      <a href="neighbors.html">Net Neighbors</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <div class="page-header">
+      <h1>About OMEC</h1>
+      <p>Why this exists, what it believes, and how it got here</p>
+    </div>
+
+    <div class="opening-statement">
+      <p>Every student can learn.<br>Every teacher deserves tools that work.<br><strong>No more scrambling to accommodate.</strong></p>
+    </div>
+
+    <!-- WHY IT EXISTS -->
+    <div class="prose-section">
+      <h2>🌱 Why OMEC Exists</h2>
+      <p>This curriculum was born in a real classroom, out of a real problem. As an ESOL specialist, I watched talented, dedicated teachers scramble the moment they found out they had Newcomers or multilingual learners on their roster. Translating documents at the last minute. Modifying assignments on the fly with no time, no framework, and no language goals. Just trying to survive the week.</p>
+      <p>That's not a teacher problem. That's a resource problem.</p>
+      <p>I also watched teachers spend hours every week writing and uploading lesson plans — hours that could have been spent actually connecting with students. OMEC exists to give those hours back. The lesson plans are here. Cut and paste them. Adapt them. Make them yours. Go spend that time with your kids.</p>
+      <div class="pull-quote">"Just translating an assignment into Spanish isn't accommodation. It's translation. Accommodation means building language goals in, scaffolding the thinking, and meeting the student where they actually are."</div>
+      <p>OMEC is designed so that a student who is fluent in English, fluent in Spanish, or actively transitioning between the two can all access the same rigorous lesson. The same analytical thinking. The same intellectual challenge. With the language support that fits where they are right now.</p>
+    </div>
+
+    <!-- THE BIGGER DREAM -->
+    <div class="prose-section">
+      <h2>🌎 The Bigger Dream</h2>
+      <p>There's a vision behind this project that goes beyond one classroom or one school year. The United States is a bilingual country whether it acknowledges it or not. English and Spanish exist side by side in our communities, our families, and our schools. OMEC is built on the belief that this is a strength — one worth building toward deliberately, the way Canada has built toward English and French.</p>
+      <p>A truly bilingual educational system requires bilingual instructional materials. Free ones. Materials that don't treat Spanish as a workaround and English as the goal, but treat both languages as equally valid pathways to rigorous thinking and full participation in academic life.</p>
+      <p>I realized that if I wanted that world to exist, I had to start building the resources to make it possible. So I did.</p>
+    </div>
+
+    <!-- WHAT WE BELIEVE -->
+    <div class="prose-section">
+      <h2>🔥 What OMEC Believes</h2>
+      <ul class="belief-list">
+        <li>Every student can learn. Not every student learns on the same timeline, and that is not a flaw — it's reality. Students should progress when they are ready, not because a calendar says it's time.</li>
+        <li>Cognitive work should not equal language complexity. A student who is still developing English fluency is not less capable of analytical thinking. Separating those two things is the whole project.</li>
+        <li>Students need agency. Curiosity doesn't survive being crushed by rigid systems. When we give students choice, ownership, and room to think, we create lifelong learners — people who understand that learning doesn't end when school does.</li>
+        <li>The core academics — reading, writing, speaking, listening, mathematics, history, science, the arts — are not ends in themselves. They are doors. The goal is to open as many doors as possible for as many students as possible.</li>
+        <li>Teachers are professionals. They don't need scripts. They need solid, flexible materials they can trust — and then the autonomy to do what they do best.</li>
+        <li>Good resources should be free. Full stop.</li>
+      </ul>
+    </div>
+
+    <!-- NO SOCIAL MEDIA -->
+    <div class="nosocial-section">
+      <h2>📵 Why There's No Social Media Here</h2>
+      <p>You won't find links to Facebook, X, Instagram, or anywhere else on this site. That's not an oversight — it's a choice.</p>
+      <p>Social media is engineered to keep you scrolling. The algorithm is not your friend. It is not designed to connect you with what's useful — it's designed to keep you engaged, anxious, and coming back. I didn't want to build something that plugged into that machine.</p>
+      <p>I wanted to build a website that feels like <strong>the internet used to feel</strong> — before the doom spiral, before the ads, before everything became a funnel. A place you come to, find what you need, and leave feeling better than when you arrived. A friendly neighborhood website. No accounts required. No tracking. No feed.</p>
+      <p>I learned to code from a site called Funky Chickens. It was free, it was generous, and it changed what I thought was possible. I used it endlessly. I never forgot it. <strong>OMEC is my attempt to pay that forward.</strong></p>
+      <p>Find OMEC the way good things used to spread — teacher to teacher, in hallways and classrooms and professional development rooms, one conversation at a time.</p>
+    </div>
+
+    <!-- CLOSING -->
+    <div class="closing">
+      <p>OMEC is an open-source project created by an educator, for educators. It will always be free. It will keep growing. And it will always believe that the students in front of you — all of them — are worth the effort of doing this right.</p>
+      <div class="sig">— Created by educators, for educators</div>
+    </div>
+
+    <div class="footer-note">
+      All materials are completely free to use, adapt, and share.<br>
+      <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Attribution-NonCommercial-ShareAlike 4.0 International</a><br>
+      Created by educators for educators.
+    </div>
+
+  </div>
+</body>
+</html>
